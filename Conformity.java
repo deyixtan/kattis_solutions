@@ -12,7 +12,8 @@ public class Conformity {
         int n = io.nextInt();
 
         // Compute popularity
-        int largest = 1; // default popularity
+        int largest = 0; // default popularity
+        int students = 0;
         for (int i = 0; i < n; i++) {
             // Set up each student combination
             ArrayList<Integer> combi = new ArrayList<Integer>();
@@ -26,15 +27,13 @@ public class Conformity {
             hmap.put(combi, popularity);
 
             // Update new popular combination
-            if (popularity > largest)
+            if (popularity > largest) {
                 largest = popularity;
-        }
-
-        // Get number of students
-        int students = 0;
-        for (int tmp : hmap.values()) {
-            if (tmp == largest)
-                students += tmp;
+                students = popularity;
+            }
+            else if (popularity == largest) {
+                students += popularity;
+            }
         }
 
         // Output
